@@ -2,6 +2,7 @@ const env = require("dotenv");
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const path = require("path");
 const cors = require("cors");
 
 // routes
@@ -37,8 +38,8 @@ mongoose.connection.on("error", (err) => {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use(cors());
 app.use(express.json());
+app.use("/public", express.static(path.join(__dirname, "uploads")));
 app.use("/api", authRoutes);
 app.use("/api", adminRoutes);
