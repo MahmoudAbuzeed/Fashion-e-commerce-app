@@ -53,8 +53,6 @@ exports.addItemToCart = async (req, res, next) => {
 };
 
 exports.getCartItems = (req, res) => {
-  //const { user } = req.body.payload;
-  //if(user){
   Cart.findOne({ user: req.user._id })
     .populate("cartItems.product", "_id name price productPictures")
     .exec((error, cart) => {
@@ -73,7 +71,6 @@ exports.getCartItems = (req, res) => {
         res.status(200).json({ cartItems });
       }
     });
-  //}
 };
 
 exports.removeCartItems = (req, res) => {
