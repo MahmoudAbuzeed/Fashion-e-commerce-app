@@ -6,6 +6,7 @@ const cors = require("cors");
 
 // routes
 const authRoutes = require("./routes/auth");
+const adminRoutes = require("./routes/admin/auth");
 
 env.config();
 
@@ -40,3 +41,4 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
 app.use("/api", authRoutes);
+app.use("/api", adminRoutes);
