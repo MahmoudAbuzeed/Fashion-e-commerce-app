@@ -1,5 +1,5 @@
-import adminRegisterReducer from "./admin.register.reducer";
-import AdminAuthReducer from "./admin.auth.reducer";
+import adminRegisterReducer from "./admin/register.reducer";
+import AdminAuthReducer from "./admin/auth.reducer";
 
 import { combineReducers } from "redux";
 

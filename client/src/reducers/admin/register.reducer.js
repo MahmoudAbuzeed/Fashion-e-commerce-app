@@ -1,4 +1,4 @@
-import { adminConstants } from "../actions/constants";
+import { adminConstants } from "../../actions/constants";
 
 const initState = {
   error: null,

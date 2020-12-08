@@ -1,2 +1,2 @@
-export * from "./admin.register.actions";
-export * from "./admin.auth.actions";
+export * from "./register.actions";
+export * from "./auth.actions";
