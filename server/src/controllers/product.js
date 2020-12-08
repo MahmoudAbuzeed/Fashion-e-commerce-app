@@ -73,15 +73,15 @@ exports.getProductDetailsById = (req, res) => {
 exports.updateProduct = async (req, res) => {
   const { productId } = req.params;
 
-  const {
-    name,
-    slug,
-    price,
-    quantity,
-    description,
-    productPictures,
-    category,
-  } = req.body;
+  const { name, slug, price, quantity, description, category } = req.body;
+
+  let productPictures = [];
+
+  if (req.files.length > 0) {
+    productPictures = req.files.map((file) => {
+      return { img: file.filename };
+    });
+  }
 
   const product = await Product.findById(productId);
   if (product) {

@@ -32,11 +32,11 @@ router.post(
 );
 router.get("/products/:slug", getProductsBySlug);
 router.get("/product/:productId", getProductDetailsById);
-router.get(
+router.post(
   "/product/update/:productId",
   upload.array("productPicture"),
   updateProduct
 );
-router.get("/product/delete:productId", deleteProduct);
+router.post("/product/delete:productId", deleteProduct);
 
 module.exports = router;
