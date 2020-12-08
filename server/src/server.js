@@ -12,6 +12,7 @@ const categoryRoutes = require("./routes/category");
 const productRoutes = require("./routes/product");
 const cartRoutes = require("./routes/cart");
 const orderRoutes = require("./routes/order");
+const initialDataRoutes = require("./routes/admin/initialData");
 
 env.config();
 
@@ -52,3 +53,4 @@ app.use("/api", categoryRoutes);
 app.use("/api", productRoutes);
 app.use("/api", cartRoutes);
 app.use("/api", orderRoutes);
+app.use("/api", initialDataRoutes);
