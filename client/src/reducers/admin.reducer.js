@@ -1,4 +1,4 @@
-import { userConstants } from "../actions/constants";
+import { adminConstants } from "../actions/constants";
 
 const initState = {
   error: null,
@@ -8,20 +8,20 @@ const initState = {
 
 const userReducer = (state = initState, action) => {
   switch (action.type) {
-    case userConstants.USER_REGISTER_REQUEST:
+    case adminConstants.ADMIN_REGISTER_REQUEST:
       state = {
         ...state,
         loading: true,
       };
       break;
-    case userConstants.USER_REGISTER_SUCCESS:
+    case adminConstants.ADMIN_REGISTER_SUCCESS:
       state = {
         ...state,
         loading: false,
         message: action.payload.message,
       };
       break;
-    case userConstants.USER_REGISTER_FAILURE:
+    case adminConstants.ADMIN_REGISTER_FAILURE:
       state = {
         ...state,
         loading: false,
