@@ -37,6 +37,6 @@ router.post(
   upload.array("productPicture"),
   updateProduct
 );
-router.post("/product/delete:productId", deleteProduct);
+router.post("/product/delete/:productId", deleteProduct);
 
 module.exports = router;
