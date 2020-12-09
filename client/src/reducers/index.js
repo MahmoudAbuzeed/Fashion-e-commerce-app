@@ -3,7 +3,8 @@ import AdminAuthReducer from "./admin/auth.reducer";
 import categoryReducer from "./admin/category.reducer";
 import productReducer from "./admin/product.reducer";
 import orderReducer from "./admin/order.reducer";
-import cartReducer from "./user/cart";
+import cartReducer from "./user/cart.reducer";
+import userCategoryReducer from "./user/category.reducer";
 
 import { combineReducers } from "redux";
 
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   category: categoryReducer,
   product: productReducer,
   order: orderReducer,
-  order: cartReducer,
+  cart: cartReducer,
+  userCategory: userCategoryReducer,
 });
 
 export default rootReducer;
