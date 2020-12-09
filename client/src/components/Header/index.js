@@ -21,7 +21,11 @@ const Header = (props) => {
     return (
       <Nav>
         <li className="nav-item">
-          <span className="nav-link" onClick={logout}>
+          <span
+            className="nav-link"
+            style={{ cursor: "pointer", textDecoration: "none" }}
+            onClick={logout}
+          >
             Signout
           </span>
         </li>

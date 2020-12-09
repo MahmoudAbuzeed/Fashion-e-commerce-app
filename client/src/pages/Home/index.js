@@ -1,9 +1,13 @@
-function Home() {
-  return (
-    <div className="App">
-      <h1>hello from home</h1>
-    </div>
-  );
-}
+import React from "react";
+import Layout from "./compoonents/Layout";
+
+/**
+ * @author
+ * @function HomePage
+ **/
+
+const Home = (props) => {
+  return <Layout>Home Page</Layout>;
+};
 
 export default Home;
