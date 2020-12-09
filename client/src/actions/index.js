@@ -7,3 +7,4 @@ export * from "./user/register.actions";
 export * from "./user/auth.actions";
 export * from "./user/cart.actions";
 export * from "./user/category.actions";
+export * from "./user/user.actions";
