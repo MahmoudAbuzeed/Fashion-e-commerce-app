@@ -1,12 +1,12 @@
 import { authConstants } from "../constants";
-import axios from "../helpers/axios";
+import axios from "../../helpers/axios";
 
 export const login = (user) => {
   console.log(user);
 
   return async (dispatch) => {
     dispatch({ type: authConstants.LOGIN_REQUEST });
-    const res = await axios.post(`http://localhost:5000/api/admin/signin`, {
+    const res = await axios.post(`http://localhost:5000/api/signin`, {
       ...user,
     });
 
@@ -32,12 +32,12 @@ export const login = (user) => {
   };
 };
 
-export const signout = () => {
+export const logout = () => {
   return async (dispatch) => {
     dispatch({ type: authConstants.LOGOUT_REQUEST });
 
     try {
-      const data = axios.post(`http://localhost:5000/api/admin/signout`);
+      const data = axios.post(`http://localhost:5000/api/signout`);
       localStorage.clear();
       dispatch({
         type: authConstants.LOGOUT_SUCCESS,

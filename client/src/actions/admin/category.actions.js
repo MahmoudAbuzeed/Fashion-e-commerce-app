@@ -1,5 +1,5 @@
-import axios from "../helpers/axios";
-import { categoryConstants } from "./constants";
+import axios from "../../helpers/axios";
+import { categoryConstants } from "../constants";
 
 const getAllCategory = () => {
   return async (dispatch) => {
@@ -69,7 +69,7 @@ export const deleteCategories = (ids) => {
         ids,
       },
     });
-    if (res.status == 201) {
+    if (res.status === 201) {
       dispatch(getAllCategory());
       dispatch({ type: categoryConstants.DELETE_CATEGORIES_SUCCESS });
     } else {

@@ -44,7 +44,7 @@ exports.signin = async (req, res, next) => {
 
     //Check the password
     user.isPasswordMatch(password, user.password, (err, matched) => {
-      if (matched && user.role === "user") {
+      if (matched) {
         //Generate JWT
         const token = jwt.sign(
           { _id: user._id, role: user.role },

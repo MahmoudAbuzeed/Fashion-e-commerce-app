@@ -30,44 +30,6 @@ exports.signup = async (req, res, next) => {
   }
 };
 
-exports.signin = async (req, res, next) => {
-  //Username, password in request
-  const { email, password } = req.body;
-  try {
-    //Retrieve user information
-    const user = await User.findOne({ email });
-    if (!user) {
-      const err = new Error(`The email ${email} was not found on our system`);
-      err.status = 400;
-      return next(err);
-    }
-
-    //Check the password
-    user.isPasswordMatch(password, user.password, (err, matched) => {
-      if (matched && user.role === "admin") {
-        //Generate JWT
-        const token = jwt.sign(
-          { _id: user._id, role: user.role },
-          process.env.JWT_SECRET,
-          { expiresIn: "1d" }
-        );
-        const { _id, firstName, lastName, email, role, fullName } = user;
-        res.cookie("token", token, { expiresIn: "1d" });
-        return res.send({
-          token,
-          user: { _id, firstName, lastName, email, role, fullName },
-        });
-      }
-
-      res.status(400).send({
-        error: "Invalid username/password combination",
-      });
-    });
-  } catch (e) {
-    next(e);
-  }
-};
-
 exports.signout = (req, res) => {
   res.clearCookie("token");
   res.status(200).json({

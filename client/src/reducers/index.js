@@ -1,4 +1,4 @@
-import adminRegisterReducer from "./admin/register.reducer";
+import userRegisterReducer from "./user/register.reducer";
 import AdminAuthReducer from "./admin/auth.reducer";
 import categoryReducer from "./admin/category.reducer";
 import productReducer from "./admin/product.reducer";
@@ -6,7 +6,7 @@ import productReducer from "./admin/product.reducer";
 import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
-  admin: adminRegisterReducer,
+  user: userRegisterReducer,
   auth: AdminAuthReducer,
   category: categoryReducer,
   product: productReducer,

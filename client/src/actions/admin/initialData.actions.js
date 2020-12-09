@@ -1,9 +1,5 @@
-import {
-  initialDataConstants,
-  categoryConstants,
-  productConstants,
-} from "./constants";
-import axios from "../helpers/axios";
+import { categoryConstants, productConstants } from "../constants";
+import axios from "../../helpers/axios";
 
 export const getInitialData = () => {
   return async (dispatch) => {
