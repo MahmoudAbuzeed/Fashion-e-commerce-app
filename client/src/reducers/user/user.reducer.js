@@ -9,7 +9,7 @@ const initState = {
   orderFetching: false,
 };
 
-export default (state = initState, action) => {
+const userReducer = (state = initState, action) => {
   switch (action.type) {
     case userConstants.GET_USER_ADDRESS_REQUEST:
       state = {
@@ -87,3 +87,5 @@ export default (state = initState, action) => {
 
   return state;
 };
+
+export default userReducer;
