@@ -58,7 +58,7 @@ const Signup = (props) => {
     };
 
     dispatch(signup(user));
-    props.history.push("login", user);
+    props.history.push("signin", user);
   };
 
   if (auth.authenticate) {
