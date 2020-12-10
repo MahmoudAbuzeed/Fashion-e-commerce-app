@@ -14,6 +14,9 @@ import { Link } from "react-router-dom";
 
 const Header = (props) => {
   const auth = useSelector((state) => state.auth);
+
+  const { user } = auth;
+
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
@@ -60,13 +63,23 @@ const Header = (props) => {
   return (
     <div className="header">
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Container>
+        <Container fluid>
           <Navbar.Brand href="/">Fashion E-Commerce</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="#features"></Nav.Link>
+              <Nav.Link href="#features">
+                {user && user.role === "admin" && (
+                  <Link
+                    style={{ color: "#FE0000", textDecoration: "none" }}
+                    to="/admin/category"
+                  >
+                    Admin Pannel
+                  </Link>
+                )}
+              </Nav.Link>
             </Nav>
+
             {auth.authenticate ? renderLoggedInMenu() : renderNonLoggedInMenu()}
           </Navbar.Collapse>
         </Container>

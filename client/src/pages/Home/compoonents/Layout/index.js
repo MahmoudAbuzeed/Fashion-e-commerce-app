@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../Header";
-//import MenuHeader from '../MenuHeader';
+import MenuHeader from "../MenuHeader";
 
 /**
  * @author
@@ -11,7 +11,7 @@ const Layout = (props) => {
   return (
     <>
       <Header />
-      {/*<MenuHeader />*/}
+      <MenuHeader />
       {props.children}
     </>
   );

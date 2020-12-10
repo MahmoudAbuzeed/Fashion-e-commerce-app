@@ -11,6 +11,8 @@ import PrivateRoute from "./components/HOC/PrivateRoute";
 import { isUserLoggedIn, getInitialData } from "./actions";
 import { useDispatch, useSelector } from "react-redux";
 
+import ProductListPage from "./pages/ProductListPage";
+
 function App() {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
@@ -29,6 +31,7 @@ function App() {
     <div className="App">
       <Switch>
         <Route path="/" exact component={Home} />
+        <Route path="/:slug" exact component={ProductListPage} />
 
         <PrivateRoute path="/admin/category" component={Category} />
         <PrivateRoute path="/admin/products" component={Products} />
