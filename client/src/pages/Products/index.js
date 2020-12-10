@@ -7,6 +7,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { addProduct, deleteProductById } from "../../actions";
 import { generatePublicUrl } from "../../urlConfig";
 import "./style.css";
+import { Button } from "react-bootstrap";
+import { IoIosArrowForward, IoIosAdd, IoIosTrash } from "react-icons/io";
 
 /**
  * @author
@@ -85,19 +87,29 @@ const Products = (props) => {
                   <td>{product.quantity}</td>
                   <td>{product.category.name}</td>
                   <td>
-                    <button onClick={() => showProductDetailsModal(product)}>
-                      info
-                    </button>
-                    <button
+                    <Button
+                      size="sm"
+                      onClick={() => showProductDetailsModal(product)}
+                      variant="info"
+                    >
+                      {" "}
+                      <IoIosArrowForward />
+                      Info
+                    </Button>{" "}
+                    <Button
+                      size="sm"
                       onClick={() => {
                         const payload = {
                           productId: product._id,
                         };
                         dispatch(deleteProductById(payload));
                       }}
+                      variant="danger"
                     >
-                      del
-                    </button>
+                      {" "}
+                      <IoIosTrash />
+                      Delete
+                    </Button>
                   </td>
                 </tr>
               ))
@@ -234,7 +246,11 @@ const Products = (props) => {
           <Col md={12}>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <h3>Products</h3>
-              <button onClick={handleShow}>Add</button>
+              <Button onClick={handleShow} variant="success">
+                {" "}
+                <IoIosAdd />
+                Add
+              </Button>{" "}
             </div>
           </Col>
         </Row>

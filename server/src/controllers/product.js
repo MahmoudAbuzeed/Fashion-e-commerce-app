@@ -1,8 +1,11 @@
 const Product = require("../models/product");
+const shortid = require("shortid");
 const slugify = require("slugify");
 const Category = require("../models/category");
 
 exports.createProduct = (req, res) => {
+  //res.status(200).json( { file: req.files, body: req.body } );
+
   const { name, price, description, category, quantity, createdBy } = req.body;
   let productPictures = [];
 
@@ -31,19 +34,10 @@ exports.createProduct = (req, res) => {
   });
 };
 
-exports.getProducts = async (req, res) => {
-  const products = await Product.find({})
-    .select("_id name price quantity slug description productPictures category")
-    .populate({ path: "category", select: "_id name" })
-    .exec();
-
-  res.status(200).json({ products });
-};
-
 exports.getProductsBySlug = (req, res) => {
   const { slug } = req.params;
   Category.findOne({ slug: slug })
-    .select("_id")
+    .select("_id type")
     .exec((error, category) => {
       if (error) {
         return res.status(400).json({ error });
@@ -55,10 +49,14 @@ exports.getProductsBySlug = (req, res) => {
             return res.status(400).json({ error });
           }
 
-          if (products.length > 0) {
-            res.status(200).json({
-              products,
-            });
+          if (category.type) {
+            if (products.length > 0) {
+              res.status(200).json({
+                products,
+              });
+            }
+          } else {
+            res.status(200).json({ products });
           }
         });
       }
@@ -79,39 +77,7 @@ exports.getProductDetailsById = (req, res) => {
   }
 };
 
-exports.updateProduct = async (req, res) => {
-  const { productId } = req.params;
-
-  const { name, slug, price, quantity, description, category } = req.body;
-
-  let productPictures = [];
-
-  if (req.files.length > 0) {
-    productPictures = req.files.map((file) => {
-      return { img: file.filename };
-    });
-  }
-
-  const product = await Product.findById(productId);
-  if (product) {
-    product.name = name;
-    product.slug = slug;
-    product.price = price;
-    product.category = category;
-    product.quantity = quantity;
-    product.description = description;
-    product.productPictures = productPictures;
-
-    const updatedProduct = await product.save();
-    if (updatedProduct) {
-      return res
-        .status(201)
-        .json({ message: "Product Updated", data: updatedProduct });
-    }
-  }
-  return res.status(400).json({ error: " Error in Updating Product." });
-};
-
+// new update
 exports.deleteProductById = (req, res) => {
   const { productId } = req.body.payload;
   if (productId) {
@@ -124,4 +90,13 @@ exports.deleteProductById = (req, res) => {
   } else {
     res.status(400).json({ error: "Params required" });
   }
+};
+
+exports.getProducts = async (req, res) => {
+  const products = await Product.find({})
+    .select("_id name price quantity slug description productPictures category")
+    .populate({ path: "category", select: "_id name" })
+    .exec();
+
+  res.status(200).json({ products });
 };

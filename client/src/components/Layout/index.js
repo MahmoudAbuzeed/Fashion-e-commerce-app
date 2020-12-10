@@ -23,9 +23,7 @@ const Layout = (props) => {
                     Home
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink to={`/admin/page`}>Page</NavLink>
-                </li>
+
                 <li>
                   <NavLink to={`/admin/category`}>Category</NavLink>
                 </li>
@@ -34,6 +32,9 @@ const Layout = (props) => {
                 </li>
                 <li>
                   <NavLink to={`/admin/orders`}>Orders</NavLink>
+                </li>
+                <li>
+                  <NavLink to={`/admin/page`}>Page</NavLink>
                 </li>
               </ul>
             </Col>

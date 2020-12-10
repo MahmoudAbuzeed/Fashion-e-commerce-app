@@ -10,7 +10,7 @@ import Category from "./pages/Category";
 import NewPage from "./pages/NewPage";
 
 import PrivateRoute from "./components/HOC/PrivateRoute";
-import { isUserLoggedIn, getInitialData } from "./actions";
+import { isUserLoggedIn } from "./actions";
 import { useDispatch, useSelector } from "react-redux";
 
 import ProductListPage from "./pages/ProductListPage";
@@ -24,16 +24,11 @@ function App() {
     if (!auth.authenticate) {
       dispatch(isUserLoggedIn());
     }
-    if (auth.authenticate) {
-      dispatch(getInitialData());
-    }
   }, [auth.authenticate]);
-
   return (
     <div className="App">
       <Switch>
         <Route path="/" exact component={Home} />
-        {/*<Route path="/:slug" exact component={ProductListPage} />*/}
 
         <PrivateRoute path="/admin/page" component={NewPage} />
         <PrivateRoute path="/admin/category" component={Category} />
@@ -42,6 +37,8 @@ function App() {
 
         <Route path="/signin" component={Signin} />
         <Route path="/signup" component={Signup} />
+
+        <Route path="/:slug" component={ProductListPage} />
       </Switch>
     </div>
   );

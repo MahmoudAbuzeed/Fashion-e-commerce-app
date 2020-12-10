@@ -1,13 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Layout from "../../components/Layout";
+import getParams from "../../utils/getParams";
+import ClothingAndAccessories from "./ClothingAndAccessories";
+import ProductPage from "./ProductPage";
+import ProductStore from "./ProductStore";
 import "./style.css";
-import { useDispatch, useSelector } from "react-redux";
-
-import { getProductsBySlug } from "../../actions";
-import Card from "../../components/UI/Card";
-import { generatePublicUrl } from "../../urlConfig";
-import { BiRupee } from "react-icons/bi";
-import { Link } from "react-router-dom";
 
 /**
  * @author
@@ -15,45 +12,25 @@ import { Link } from "react-router-dom";
  **/
 
 const ProductListPage = (props) => {
-  const product = useSelector((state) => state.product);
-  const dispatch = useDispatch();
+  const renderProduct = () => {
+    console.log(props);
+    const params = getParams(props.location.search);
+    let content = null;
+    switch (params.type) {
+      case "store":
+        content = <ProductStore {...props} />;
+        break;
+      case "page":
+        content = <ProductPage {...props} />;
+        break;
+      default:
+        content = <ClothingAndAccessories {...props} />;
+    }
 
-  useEffect(() => {
-    const { match } = props;
-    dispatch(getProductsBySlug(match.params.slug));
-  }, []);
+    return content;
+  };
 
-  return (
-    <Layout>
-      <div style={{ padding: "10px" }}>
-        <Card
-          style={{
-            boxSizing: "border-box",
-            padding: "10px",
-            display: "flex",
-          }}
-        >
-          {product.products.map((product) => (
-            <div className="caContainer">
-              <Link
-                className="caImgContainer"
-                to={`/${product.slug}/${product._id}/p`}
-              >
-                <img src={generatePublicUrl(product.productPictures[0].img)} />
-              </Link>
-              <div>
-                <div className="caProductName">{product.name}</div>
-                <div className="caProductPrice">
-                  <BiRupee />
-                  {product.price}
-                </div>
-              </div>
-            </div>
-          ))}
-        </Card>
-      </div>
-    </Layout>
-  );
+  return <Layout>{renderProduct()}</Layout>;
 };
 
 export default ProductListPage;

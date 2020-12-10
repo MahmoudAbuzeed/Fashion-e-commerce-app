@@ -11,7 +11,7 @@ const initState = {
   loading: false,
 };
 
-const userProductReducer = (state = initState, action) => {
+export default (state = initState, action) => {
   switch (action.type) {
     case productConstants.GET_PRODUCTS_BY_SLUG:
       state = {
@@ -63,11 +63,7 @@ const userProductReducer = (state = initState, action) => {
         error: action.payload.error,
       };
       break;
-    default:
-      return state;
   }
 
   return state;
 };
-
-export default userProductReducer;

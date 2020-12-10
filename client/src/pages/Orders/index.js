@@ -4,6 +4,8 @@ import { updateOrder } from "../../actions";
 import Layout from "../../components/Layout";
 import Card from "../../components/UI/Card";
 
+import { Form, Button } from "react-bootstrap";
+
 import "./style.css";
 
 /**
@@ -105,7 +107,11 @@ const Orders = (props) => {
                 boxSizing: "border-box",
               }}
             >
-              <select onChange={(e) => setType(e.target.value)}>
+              <Form.Control
+                as="select"
+                custom
+                onChange={(e) => setType(e.target.value)}
+              >
                 <option value={""}>select status</option>
                 {orderItem.orderStatus.map((status) => {
                   return (
@@ -118,9 +124,8 @@ const Orders = (props) => {
                     </>
                   );
                 })}
-              </select>
+              </Form.Control>
             </div>
-            {/* button to confirm action */}
 
             <div
               style={{
@@ -128,9 +133,13 @@ const Orders = (props) => {
                 boxSizing: "border-box",
               }}
             >
-              <button onClick={() => onOrderUpdate(orderItem._id)}>
+              <Button
+                onClick={() => onOrderUpdate(orderItem._id)}
+                variant="success"
+              >
+                {" "}
                 confirm
-              </button>
+              </Button>{" "}
             </div>
           </div>
         </Card>

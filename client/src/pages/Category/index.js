@@ -20,6 +20,9 @@ import {
   IoIosCloudUpload,
 } from "react-icons/io";
 
+import { getInitialData } from "../../actions";
+import { Button } from "react-bootstrap";
+
 import "react-checkbox-tree/lib/react-checkbox-tree.css";
 import UpdateCategoriesModal from "./components/UpdateCategoriesModal";
 import AddCategoryModal from "./components/AddCategoryModal";
@@ -44,6 +47,9 @@ const Category = (props) => {
   const [deleteCategoryModal, setDeleteCategoryModal] = useState(false);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getInitialData());
+  }, []);
   useEffect(() => {
     if (!category.loading) {
       setShow(false);
@@ -231,16 +237,22 @@ const Category = (props) => {
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <h3>Category</h3>
               <div className="actionBtnContainer">
-                <span>Actions: </span>
-                <button onClick={handleShow}>
-                  <IoIosAdd /> <span>Add</span>
-                </button>
-                <button onClick={deleteCategory}>
-                  <IoIosTrash /> <span>Delete</span>
-                </button>
-                <button onClick={updateCategory}>
-                  <IoIosCloudUpload /> <span>Edit</span>
-                </button>
+                <span>Actions : </span>
+                <Button onClick={handleShow} variant="success">
+                  {" "}
+                  <IoIosAdd />
+                  Add
+                </Button>{" "}
+                <Button onClick={updateCategory} variant="info">
+                  {" "}
+                  <IoIosCloudUpload />
+                  Edit
+                </Button>{" "}
+                <Button onClick={deleteCategory} variant="danger">
+                  {" "}
+                  <IoIosTrash />
+                  Delete
+                </Button>
               </div>
             </div>
           </Col>

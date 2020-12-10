@@ -6,6 +6,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import linearCategories from "../../helpers/linearCategories";
 import { useSelector, useDispatch } from "react-redux";
 import { createPage } from "../../actions";
+import { Button } from "react-bootstrap";
 
 /**
  * @author
@@ -23,7 +24,7 @@ const NewPage = (props) => {
   const [banners, setBanners] = useState([]);
   const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
-  const page = useSelector((state) => state.page);
+  const page = useSelector((state) => state.userProduct);
 
   useEffect(() => {
     setCategories(linearCategories(category.categories));
@@ -95,6 +96,7 @@ const NewPage = (props) => {
           <Row>
             <Col>
               <Input
+                label="Category"
                 type="select"
                 value={categoryId}
                 onChange={onCategoryChange}
@@ -107,6 +109,7 @@ const NewPage = (props) => {
           <Row>
             <Col>
               <Input
+                label="Title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder={"Page Title"}
@@ -118,6 +121,7 @@ const NewPage = (props) => {
           <Row>
             <Col>
               <Input
+                label="Discription"
                 value={desc}
                 onChange={(e) => setDesc(e.target.value)}
                 placeholder={"Page Desc"}
@@ -136,6 +140,7 @@ const NewPage = (props) => {
           <Row>
             <Col>
               <Input
+                label="Banners"
                 className="form-control"
                 type="file"
                 name="banners"
@@ -154,6 +159,7 @@ const NewPage = (props) => {
           <Row>
             <Col>
               <Input
+                label="Products"
                 className="form-control"
                 type="file"
                 name="products"
@@ -173,7 +179,14 @@ const NewPage = (props) => {
       ) : (
         <>
           {renderCreatePageModal()}
-          <button onClick={() => setCreateModal(true)}>Create Page</button>
+          <Button
+            size="lg"
+            onClick={() => setCreateModal(true)}
+            variant="success"
+          >
+            {" "}
+            Create Page
+          </Button>{" "}
         </>
       )}
     </Layout>

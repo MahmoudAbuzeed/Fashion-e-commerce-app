@@ -19,15 +19,9 @@ const Header = (props) => {
 
   const dispatch = useDispatch();
 
-  const cart = useSelector((state) => state.cart);
-
   const logout = () => {
     dispatch(signout());
   };
-
-  useEffect(() => {
-    dispatch(getCartItems());
-  }, []);
 
   const renderLoggedInMenu = () => {
     return (
