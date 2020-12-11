@@ -15,6 +15,7 @@ const orderRoutes = require("./routes/order");
 const initialDataRoutes = require("./routes/admin/initialData");
 const adminOrderRoute = require("./routes/admin/order");
 const adminPageRoute = require("./routes/admin/page");
+const addressRoutes = require("./routes/address");
 
 env.config();
 
@@ -58,3 +59,4 @@ app.use("/api", orderRoutes);
 app.use("/api", initialDataRoutes);
 app.use("/api", adminOrderRoute);
 app.use("/api", adminPageRoute);
+app.use("/api", addressRoutes);

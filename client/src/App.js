@@ -14,6 +14,9 @@ import { isUserLoggedIn } from "./actions";
 import { useDispatch, useSelector } from "react-redux";
 
 import ProductListPage from "./pages/ProductListPage";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
+import CartPage from "./pages/CartPage";
+import CheckoutPage from "./pages/CheckoutPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,6 +41,13 @@ function App() {
         <Route path="/signin" component={Signin} />
         <Route path="/signup" component={Signup} />
 
+        <Route path="/cart" component={CartPage} />
+        <Route path="/checkout" component={CheckoutPage} />
+
+        <Route
+          path="/:productSlug/:productId/p"
+          component={ProductDetailsPage}
+        />
         <Route path="/:slug" component={ProductListPage} />
       </Switch>
     </div>

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { TiShoppingCart } from "react-icons/ti";
 import { useDispatch, useSelector } from "react-redux";
-import { signout, getCartItems, signup as _signup } from "../../actions";
+import { signout, signup as _signup } from "../../actions";
 
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -18,15 +18,9 @@ const Header = (props) => {
 
   const dispatch = useDispatch();
 
-  const cart = useSelector((state) => state.cart);
-
   const logout = () => {
     dispatch(signout());
   };
-
-  useEffect(() => {
-    dispatch(getCartItems());
-  }, []);
 
   const renderLoggedInMenu = () => {
     return (
