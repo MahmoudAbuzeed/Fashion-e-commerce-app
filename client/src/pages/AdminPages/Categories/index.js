@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Layout from "../../components/Layout/AdminLayout";
+import Layout from "../../../components/Layout/AdminLayout";
 import { Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -7,8 +7,8 @@ import {
   addCategory,
   updateCategories,
   deleteCategories as deleteCategoriesAction,
-} from "../../actions";
-import Modal from "../../components/UI/Modal";
+} from "../../../actions";
+import Modal from "../../../components/UI/Modal";
 import CheckboxTree from "react-checkbox-tree";
 import {
   IoIosCheckboxOutline,
@@ -20,7 +20,7 @@ import {
   IoIosCloudUpload,
 } from "react-icons/io";
 
-import { getInitialData } from "../../actions";
+import { getInitialData } from "../../../actions";
 import { Button } from "react-bootstrap";
 
 import "react-checkbox-tree/lib/react-checkbox-tree.css";

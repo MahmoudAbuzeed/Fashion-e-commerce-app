@@ -1,6 +1,6 @@
 import React from "react";
-import Layout from "../../components/Layout/UserLayout";
-import getParams from "../../utils/getParams";
+import Layout from "../../../components/Layout/UserLayout";
+import getParams from "../../../utils/getParams";
 import ClothingAndAccessories from "./ClothingAndAccessories";
 import ProductPage from "./ProductPage";
 import "./style.css";
@@ -28,7 +28,7 @@ const ProductListPage = (props) => {
   return (
     <div
       style={{
-        marginTop: "60px",
+        marginTop: "70px",
       }}
     >
       <Layout>{renderProduct()}</Layout>

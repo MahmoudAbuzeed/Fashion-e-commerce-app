@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Layout from "../../components/Layout/UserLayout";
-import Card from "../../components/UI/Card";
+import Layout from "../../../components/Layout/UserLayout";
+import Card from "../../../components/UI/Card";
 import CartItem from "./CartItem";
-import { addToCart, getCartItems, removeCartItem } from "../../actions";
-import PriceDetails from "../../components/PriceDetails";
+import { addToCart, getCartItems, removeCartItem } from "../../../actions";
+import PriceDetails from "../../../components/PriceDetails";
 
 import "./style.css";
 import { Button } from "react-bootstrap";
@@ -60,7 +60,7 @@ const CartPage = (props) => {
   }
 
   return (
-    <div style={{ padding: "10px", marginTop: "50px" }}>
+    <div style={{ padding: "10px", marginTop: "10px" }}>
       <Layout>
         <div className="cartContainer" style={{ alignItems: "flex-start" }}>
           <Card

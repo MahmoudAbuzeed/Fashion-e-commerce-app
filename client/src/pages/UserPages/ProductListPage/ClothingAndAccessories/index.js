@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductsBySlug } from "../../../actions";
-import { generatePublicUrl } from "../../../urlConfig";
+import { getProductsBySlug } from "../../../../actions";
+import { generatePublicUrl } from "../../../../urlConfig";
 import { Link } from "react-router-dom";
 
 import Grid from "@material-ui/core/Grid";
@@ -61,7 +61,7 @@ const ClothingAndAccessories = (props) => {
   }, []);
 
   return (
-    <div style={{ padding: "10px", marginTop: "50px" }}>
+    <div style={{ padding: "10px", marginTop: "70px" }}>
       <h1>Hello from product Page</h1>
       <Container>
         <Grid container spacing={4}>

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addOrder, getAddress, getCartItems } from "../../actions";
-import Layout from "../../components/Layout/UserLayout";
+import { addOrder, getAddress, getCartItems } from "../../../actions";
+import Layout from "../../../components/Layout/UserLayout";
 import { Button } from "react-bootstrap";
-import Input from "../../components/UI/Input";
+import Input from "../../../components/UI/Input";
 
-import PriceDetails from "../../components/PriceDetails";
-import Card from "../../components/UI/Card";
+import PriceDetails from "../../../components/PriceDetails";
+import Card from "../../../components/UI/Card";
 import CartPage from "../CartPage";
 import AddressForm from "./AddressForm";
 
@@ -176,7 +176,7 @@ const CheckoutPage = (props) => {
 
   if (confirmOrder) {
     return (
-      <div style={{ padding: "10px", marginTop: "50px" }}>
+      <div style={{ marginTop: "10px" }}>
         <Layout>
           <Card>
             <div>Thank you</div>
@@ -187,7 +187,7 @@ const CheckoutPage = (props) => {
   }
 
   return (
-    <div style={{ padding: "10px", marginTop: "50px" }}>
+    <div style={{ padding: "10px", marginTop: "10px" }}>
       <Layout>
         <div
           className="cartContainer"

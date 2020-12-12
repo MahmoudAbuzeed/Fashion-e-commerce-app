@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Modal from "../../components/UI/Modal";
-import Layout from "../../components/Layout/AdminLayout";
-import Input from "../../components/UI/Input";
-import { Container, Row, Col } from "react-bootstrap";
-import linearCategories from "../../helpers/linearCategories";
+import Modal from "../../../components/UI/Modal";
+import Layout from "../../../components/Layout/AdminLayout";
+import Input from "../../../components/UI/Input";
+import { Container, Row, Col, Form } from "react-bootstrap";
+import linearCategories from "../../../helpers/linearCategories";
 import { useSelector, useDispatch } from "react-redux";
-import { createPage } from "../../actions";
+import { createPage } from "../../../actions";
 import { Button } from "react-bootstrap";
 
 /**
@@ -88,80 +88,90 @@ const NewPage = (props) => {
         onSubmit={submitPageForm}
       >
         <Container>
-          <Row>
-            <Col>
-              <Input
-                label="Category"
-                type="select"
-                value={categoryId}
-                onChange={onCategoryChange}
-                options={categories}
-                placeholder={"Select Category"}
-              />
-            </Col>
-          </Row>
+          <Form.Group>
+            <Row>
+              <Col>
+                <Input
+                  label="Category"
+                  type="select"
+                  value={categoryId}
+                  onChange={onCategoryChange}
+                  options={categories}
+                  placeholder={"Select Category"}
+                />
+              </Col>
+            </Row>
+          </Form.Group>
 
-          <Row>
-            <Col>
-              <Input
-                label="Title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                placeholder={"Page Title"}
-                className=""
-              />
-            </Col>
-          </Row>
+          <Form.Group>
+            <Row>
+              <Col>
+                <Input
+                  label="Title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  placeholder={"Page Title"}
+                  className=""
+                />
+              </Col>
+            </Row>
+          </Form.Group>
 
-          <Row>
-            <Col>
-              <Input
-                label="Discription"
-                value={desc}
-                onChange={(e) => setDesc(e.target.value)}
-                placeholder={"Page Desc"}
-                className=""
-              />
-            </Col>
-          </Row>
+          <Form.Group>
+            <Row>
+              <Col>
+                <Input
+                  label="Discription"
+                  value={desc}
+                  onChange={(e) => setDesc(e.target.value)}
+                  placeholder={"Page Desc"}
+                  className=""
+                />
+              </Col>
+            </Row>
+          </Form.Group>
 
-          {banners.length > 0
-            ? banners.map((banner, index) => (
-                <Row key={index}>
-                  <Col>{banner.name}</Col>
-                </Row>
-              ))
-            : null}
-          <Row>
-            <Col>
-              <Input
-                label="Banners"
-                className="form-control"
-                type="file"
-                name="banners"
-                onChange={handleBannerImages}
-              />
-            </Col>
-          </Row>
+          <Form.Group>
+            <Row>
+              <Col>
+                <Input
+                  label="Banners"
+                  className="form-control"
+                  type="file"
+                  name="banners"
+                  onChange={handleBannerImages}
+                />
+              </Col>
+            </Row>
+            {banners.length > 0
+              ? banners.map((banner, index) => (
+                  <Row key={index}>
+                    <Col>{banner.name}</Col>
+                  </Row>
+                ))
+              : null}
+          </Form.Group>
 
-          {products.length > 0
-            ? products.map((product, index) => (
-                <Row key={index}>
-                  <Col>{product.name}</Col>
-                </Row>
-              ))
-            : null}
-          <Row>
-            <Col>
-              <Input
-                label="Products"
-                className="form-control"
-                type="file"
-                name="products"
-                onChange={handleProductImages}
-              />
-            </Col>
-          </Row>
+          <Form.Group>
+            <Row>
+              <Col>
+                <Input
+                  label="Products"
+                  className="form-control"
+                  type="file"
+                  name="products"
+                  onChange={handleProductImages}
+                />
+              </Col>
+            </Row>
+            {products.length > 0
+              ? products.map((product, index) => (
+                  <Row key={index}>
+                    <Col>{product.name}</Col>
+                  </Row>
+                ))
+              : null}
+          </Form.Group>
         </Container>
       </Modal>
     );

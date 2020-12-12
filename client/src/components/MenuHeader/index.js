@@ -39,7 +39,7 @@ const MenuHeader = (props) => {
     return myCategories;
   };
   return (
-    <div className="menuHeader">
+    <div style={{ marginTop: "50px" }} className="menuHeader">
       <ul>
         {category.categories.length > 0
           ? renderCategories(category.categories)

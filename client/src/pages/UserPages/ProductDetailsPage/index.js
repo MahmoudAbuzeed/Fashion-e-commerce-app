@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductDetailsById } from "../../actions";
-import Layout from "../../components/Layout/UserLayout";
+import { getProductDetailsById } from "../../../actions";
+import Layout from "../../../components/Layout/UserLayout";
 import { IoIosStar, IoMdCart } from "react-icons/io";
 import { Button } from "react-bootstrap";
 import "./style.css";
-import { generatePublicUrl } from "../../urlConfig";
-import { addToCart } from "../../actions";
+import { generatePublicUrl } from "../../../urlConfig";
+import { addToCart } from "../../../actions";
 
 /**
  * @author
@@ -32,7 +32,7 @@ const ProductDetailsPage = (props) => {
   }
 
   return (
-    <div style={{ padding: "10px", marginTop: "50px" }}>
+    <div style={{ padding: "10px", marginTop: "70px" }}>
       <Layout>
         <div
           className="productDescriptionContainer"

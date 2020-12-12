@@ -83,7 +83,7 @@ const Header = (props) => {
                 {user && user.role === "admin" && (
                   <Link
                     style={{ color: "#FE0000", textDecoration: "none" }}
-                    to="/admin/category"
+                    to="/admin/categories"
                   >
                     Admin Pannel
                   </Link>

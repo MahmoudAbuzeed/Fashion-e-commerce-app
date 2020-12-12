@@ -25,7 +25,7 @@ const Layout = (props) => {
                 </li>
 
                 <li>
-                  <NavLink to={`/admin/category`}>Category</NavLink>
+                  <NavLink to={`/admin/categories`}>Category</NavLink>
                 </li>
                 <li>
                   <NavLink to={`/admin/products`}>Products</NavLink>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { generatePublicUrl } from "../../../urlConfig";
+import { generatePublicUrl } from "../../../../urlConfig";
 import "./style.css";
 
 /**

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import Layout from "../../components/Layout/AdminLayout";
+import Layout from "../../../components/Layout/AdminLayout";
 import { Container, Row, Col, Table } from "react-bootstrap";
-import Input from "../../components/UI/Input";
-import Modal from "../../components/UI/Modal";
+import Input from "../../../components/UI/Input";
+import Modal from "../../../components/UI/Modal";
 import { useSelector, useDispatch } from "react-redux";
-import { addProduct, deleteProductById } from "../../actions";
-import { generatePublicUrl } from "../../urlConfig";
+import { addProduct, deleteProductById } from "../../../actions";
+import { generatePublicUrl } from "../../../urlConfig";
 import "./style.css";
 import { Button } from "react-bootstrap";
 import { IoIosArrowForward, IoIosAdd, IoIosTrash } from "react-icons/io";

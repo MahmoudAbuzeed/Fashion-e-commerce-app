@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addAddress } from "../../actions";
+import { addAddress } from "../../../actions";
 import { Button } from "react-bootstrap";
-import Input from "../../components/UI/Input";
+import Input from "../../../components/UI/Input";
 
 /**
  * @author

@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getOrders } from "../../actions";
-import Layout from "../../components/Layout/UserLayout";
-import { generatePublicUrl } from "../../urlConfig";
+import { getOrders } from "../../../actions";
+import Layout from "../../../components/Layout/UserLayout";
+import { generatePublicUrl } from "../../../urlConfig";
 
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
@@ -59,7 +59,7 @@ const OrderPage = (props) => {
   }, []);
 
   return (
-    <div style={{ padding: "10px", marginTop: "50px" }}>
+    <div style={{ padding: "10px", marginTop: "10px" }}>
       <Layout>
         <h1 style={{ marginBottom: "20px" }}>My Orders</h1>
         <Container>

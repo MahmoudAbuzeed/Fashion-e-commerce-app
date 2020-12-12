@@ -11,3 +11,4 @@
 [1211/134642.112:ERROR:exception_snapshot_win.cc(99)] thread ID 5848 not found in process
 [1211/134642.112:ERROR:exception_snapshot_win.cc(99)] thread ID 2096 not found in process
 [1211/232008.529:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1212/093627.103:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)

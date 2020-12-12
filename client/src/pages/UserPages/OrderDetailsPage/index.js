@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getOrder } from "../../actions";
-import Layout from "../../components/Layout/UserLayout";
+import { getOrder } from "../../../actions";
+import Layout from "../../../components/Layout/UserLayout";
 import Card from "@material-ui/core/Card";
-import { generatePublicUrl } from "../../urlConfig";
+import { generatePublicUrl } from "../../../urlConfig";
 
 import "./style.css";
 import { Container } from "react-bootstrap";
@@ -60,7 +60,7 @@ const OrderDetailsPage = (props) => {
   return (
     <div
       style={{
-        marginTop: "60px ",
+        marginTop: "70px ",
       }}
     >
       <Layout>
