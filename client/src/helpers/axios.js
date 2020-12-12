@@ -25,7 +25,6 @@ axiosIntance.interceptors.response.use(
     return res;
   },
   (error) => {
-    console.log(error.response);
     const status = error.response ? error.response.status : 500;
     if (status && status === 500) {
       localStorage.clear();

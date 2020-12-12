@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addOrder, getAddress, getCartItems } from "../../actions";
-import Layout from "../../components/Layout";
+import Layout from "../../components/Layout/UserLayout";
 import { Button } from "react-bootstrap";
 import Input from "../../components/UI/Input";
 
-import PriceDetails from "../Home/compoonents/PriceDetails";
+import PriceDetails from "../../components/PriceDetails";
 import Card from "../../components/UI/Card";
 import CartPage from "../CartPage";
 import AddressForm from "./AddressForm";
@@ -156,7 +156,6 @@ const CheckoutPage = (props) => {
       paymentType: "cod",
     };
 
-    console.log(payload);
     dispatch(addOrder(payload));
     setConfirmOrder(true);
   };
@@ -177,162 +176,175 @@ const CheckoutPage = (props) => {
 
   if (confirmOrder) {
     return (
-      <Layout>
-        <Card style={{ padding: "10px", marginTop: "100px" }}>
-          <div>Thank you</div>
-        </Card>
-      </Layout>
+      <div style={{ padding: "10px", marginTop: "50px" }}>
+        <Layout>
+          <Card>
+            <div>Thank you</div>
+          </Card>
+        </Layout>
+      </div>
     );
   }
 
   return (
-    <Layout>
-      <div
-        className="cartContainer"
-        style={{ alignItems: "flex-start", padding: "10px", marginTop: "50px" }}
-      >
-        <div className="checkoutContainer">
-          {/* check if user logged in or not */}
-          <CheckoutStep
-            stepNumber={"1"}
-            title={"LOGIN"}
-            active={!auth.authenticate}
-            body={
-              auth.authenticate ? (
-                <div className="loggedInId">
-                  <span style={{ fontWeight: 500 }}>{auth.user.fullName}</span>
-                  <span style={{ margin: "0 5px" }}>{auth.user.email}</span>
-                </div>
-              ) : (
-                <div>
-                  <Input label="Email" />
-                </div>
-              )
-            }
-          />
-          <CheckoutStep
-            stepNumber={"2"}
-            title={"DELIVERY ADDRESS"}
-            active={!confirmAddress && auth.authenticate}
-            body={
-              <>
-                {confirmAddress ? (
-                  <div className="stepCompleted">{`${selectedAddress.name} ${selectedAddress.address} - ${selectedAddress.pinCode}`}</div>
-                ) : (
-                  address.map((adr) => (
-                    <Address
-                      selectAddress={selectAddress}
-                      enableAddressEditForm={enableAddressEditForm}
-                      confirmDeliveryAddress={confirmDeliveryAddress}
-                      onAddressSubmit={onAddressSubmit}
-                      adr={adr}
-                    />
-                  ))
-                )}
-              </>
-            }
-          />
-
-          {/* AddressForm */}
-          {confirmAddress ? null : newAddress ? (
-            <AddressForm onSubmitForm={onAddressSubmit} onCancel={() => {}} />
-          ) : auth.authenticate ? (
+    <div style={{ padding: "10px", marginTop: "50px" }}>
+      <Layout>
+        <div
+          className="cartContainer"
+          style={{
+            alignItems: "flex-start",
+            padding: "10px",
+            marginTop: "50px",
+          }}
+        >
+          <div className="checkoutContainer">
+            {/* check if user logged in or not */}
             <CheckoutStep
-              stepNumber={"+"}
-              title={"ADD NEW ADDRESS"}
-              active={false}
-              onClick={() => setNewAddress(true)}
+              stepNumber={"1"}
+              title={"LOGIN"}
+              active={!auth.authenticate}
+              body={
+                auth.authenticate ? (
+                  <div className="loggedInId">
+                    <span style={{ fontWeight: 500 }}>
+                      {auth.user.fullName}
+                    </span>
+                    <span style={{ margin: "0 5px" }}>{auth.user.email}</span>
+                  </div>
+                ) : (
+                  <div>
+                    <Input label="Email" />
+                  </div>
+                )
+              }
             />
-          ) : null}
+            <CheckoutStep
+              stepNumber={"2"}
+              title={"DELIVERY ADDRESS"}
+              active={!confirmAddress && auth.authenticate}
+              body={
+                <>
+                  {confirmAddress ? (
+                    <div className="stepCompleted">{`${selectedAddress.name} ${selectedAddress.address} - ${selectedAddress.pinCode}`}</div>
+                  ) : (
+                    address.map((adr) => (
+                      <Address
+                        selectAddress={selectAddress}
+                        enableAddressEditForm={enableAddressEditForm}
+                        confirmDeliveryAddress={confirmDeliveryAddress}
+                        onAddressSubmit={onAddressSubmit}
+                        adr={adr}
+                      />
+                    ))
+                  )}
+                </>
+              }
+            />
 
-          <CheckoutStep
-            stepNumber={"3"}
-            title={"ORDER SUMMARY"}
-            active={orderSummary}
-            body={
-              orderSummary ? (
-                <CartPage onlyCartItems={true} />
-              ) : orderConfirmation ? (
-                <div className="stepCompleted">
-                  {Object.keys(cart.cartItems).length} items
-                </div>
-              ) : null
-            }
-          />
+            {/* AddressForm */}
+            {confirmAddress ? null : newAddress ? (
+              <AddressForm onSubmitForm={onAddressSubmit} onCancel={() => {}} />
+            ) : auth.authenticate ? (
+              <CheckoutStep
+                stepNumber={"+"}
+                title={"ADD NEW ADDRESS"}
+                active={false}
+                onClick={() => setNewAddress(true)}
+              />
+            ) : null}
 
-          {orderSummary && (
-            <Card
-              style={{
-                margin: "10px 0",
-              }}
-            >
-              <div
-                className="flexRow sb"
+            <CheckoutStep
+              stepNumber={"3"}
+              title={"ORDER SUMMARY"}
+              active={orderSummary}
+              body={
+                orderSummary ? (
+                  <CartPage onlyCartItems={true} />
+                ) : orderConfirmation ? (
+                  <div className="stepCompleted">
+                    {Object.keys(cart.cartItems).length} items
+                  </div>
+                ) : null
+              }
+            />
+
+            {orderSummary && (
+              <Card
                 style={{
-                  padding: "20px",
-                  alignItems: "center",
+                  margin: "10px 0",
                 }}
               >
-                <p style={{ fontSize: "12px" }}>
-                  Order confirmation email will be sent to{" "}
-                  <strong>{auth.user.email}</strong>
-                </p>
-                <Button
-                  onClick={userOrderConfirmation}
+                <div
+                  className="flexRow sb"
                   style={{
-                    width: "200px",
+                    padding: "20px",
+                    alignItems: "center",
                   }}
                 >
-                  CONTINUE{" "}
-                </Button>
-              </div>
-            </Card>
-          )}
-
-          <CheckoutStep
-            stepNumber={"4"}
-            title={"PAYMENT OPTIONS"}
-            active={paymentOption}
-            body={
-              paymentOption && (
-                <div>
-                  <div
-                    className="flexRow"
-                    style={{
-                      alignItems: "center",
-                      padding: "20px",
-                    }}
-                  >
-                    <input type="radio" name="paymentOption" value="cod" />
-                    <div>Cash on delivery</div>
-                  </div>
+                  <p style={{ fontSize: "12px" }}>
+                    Order confirmation email will be sent to{" "}
+                    <strong>{auth.user.email}</strong>
+                  </p>
                   <Button
-                    onClick={onConfirmOrder}
+                    onClick={userOrderConfirmation}
                     style={{
                       width: "200px",
-                      margin: "0 0 20px 20px",
                     }}
                   >
-                    CONFIRM ORDER
+                    CONTINUE{" "}
                   </Button>
                 </div>
-              )
-            }
+              </Card>
+            )}
+
+            <CheckoutStep
+              stepNumber={"4"}
+              title={"PAYMENT OPTIONS"}
+              active={paymentOption}
+              body={
+                paymentOption && (
+                  <div>
+                    <div
+                      className="flexRow"
+                      style={{
+                        alignItems: "center",
+                        padding: "20px",
+                      }}
+                    >
+                      <input type="radio" name="paymentOption" value="cod" />
+                      <div>Cash on delivery</div>
+                    </div>
+                    <Button
+                      onClick={onConfirmOrder}
+                      style={{
+                        width: "200px",
+                        margin: "0 0 20px 20px",
+                      }}
+                    >
+                      CONFIRM ORDER
+                    </Button>
+                  </div>
+                )
+              }
+            />
+          </div>
+
+          {/* Price Component */}
+          <PriceDetails
+            totalItem={Object.keys(cart.cartItems).reduce(function (qty, key) {
+              return qty + cart.cartItems[key].qty;
+            }, 0)}
+            totalPrice={Object.keys(cart.cartItems).reduce(
+              (totalPrice, key) => {
+                const { price, qty } = cart.cartItems[key];
+                return totalPrice + price * qty;
+              },
+              0
+            )}
           />
         </div>
-
-        {/* Price Component */}
-        <PriceDetails
-          totalItem={Object.keys(cart.cartItems).reduce(function (qty, key) {
-            return qty + cart.cartItems[key].qty;
-          }, 0)}
-          totalPrice={Object.keys(cart.cartItems).reduce((totalPrice, key) => {
-            const { price, qty } = cart.cartItems[key];
-            return totalPrice + price * qty;
-          }, 0)}
-        />
-      </div>
-    </Layout>
+      </Layout>
+    </div>
   );
 };
 

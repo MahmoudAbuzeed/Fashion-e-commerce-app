@@ -9,7 +9,7 @@ const initState = {
 const buildNewCategories = (parentId, categories, category) => {
   let myCategories = [];
 
-  if (parentId == undefined) {
+  if (parentId === undefined) {
     return [
       ...categories,
       {
@@ -22,7 +22,7 @@ const buildNewCategories = (parentId, categories, category) => {
   }
 
   for (let cat of categories) {
-    if (cat._id == parentId) {
+    if (cat._id === parentId) {
       myCategories.push({
         ...cat,
         children: cat.children
@@ -76,7 +76,6 @@ const categoryReducer = (state = initState, action) => {
         state.categories,
         category
       );
-      console.log("updated categoires", updatedCategories);
 
       state = {
         ...state,
@@ -89,6 +88,8 @@ const categoryReducer = (state = initState, action) => {
         ...initState,
       };
       break;
+    default:
+      return state;
   }
 
   return state;

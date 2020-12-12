@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Layout from "../../components/Layout";
+import Layout from "../../components/Layout/AdminLayout";
 import { Container, Row, Col, Table } from "react-bootstrap";
 import Input from "../../components/UI/Input";
 import Modal from "../../components/UI/Modal";

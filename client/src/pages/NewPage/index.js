@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Modal from "../../components/UI/Modal";
-import Layout from "../../components/Layout";
+import Layout from "../../components/Layout/AdminLayout";
 import Input from "../../components/UI/Input";
 import { Container, Row, Col } from "react-bootstrap";
 import linearCategories from "../../helpers/linearCategories";
@@ -31,7 +31,6 @@ const NewPage = (props) => {
   }, [category]);
 
   useEffect(() => {
-    console.log(page);
     if (!page.loading) {
       setCreateModal(false);
       setTitle("");
@@ -51,18 +50,14 @@ const NewPage = (props) => {
   };
 
   const handleBannerImages = (e) => {
-    console.log(e);
     setBanners([...banners, e.target.files[0]]);
   };
 
   const handleProductImages = (e) => {
-    console.log(e);
     setProducts([...products, e.target.files[0]]);
   };
 
   const submitPageForm = (e) => {
-    //e.target.preventDefault();
-
     if (title === "") {
       alert("Title is required");
       setCreateModal(false);

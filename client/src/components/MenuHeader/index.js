@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./style.css";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllCategory } from "../../../../actions";
+import { getAllCategory } from "../../actions";
 
 /**
  * @author

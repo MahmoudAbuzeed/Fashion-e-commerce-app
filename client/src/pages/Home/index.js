@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "./compoonents/Layout";
+import Layout from "../../components/Layout/UserLayout";
 
 /**
  * @author
@@ -7,7 +7,11 @@ import Layout from "./compoonents/Layout";
  **/
 
 const Home = (props) => {
-  return <Layout>Home Page</Layout>;
+  return (
+    <div style={{ marginTop: "50px" }}>
+      <Layout>Home Page</Layout>
+    </div>
+  );
 };
 
 export default Home;

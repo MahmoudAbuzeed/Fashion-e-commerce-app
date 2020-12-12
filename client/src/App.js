@@ -18,12 +18,12 @@ import ProductDetailsPage from "./pages/ProductDetailsPage";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import OrderPage from "./pages/OrderPage";
+import OrderDetailsPage from "./pages/OrderDetailsPage";
 
 function App() {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
 
-  //componentDidMount or componentDidUpdate
   useEffect(() => {
     if (!auth.authenticate) {
       dispatch(isUserLoggedIn());
@@ -45,7 +45,7 @@ function App() {
         <Route path="/cart" component={CartPage} />
         <Route path="/checkout" component={CheckoutPage} />
         <Route path="/account/orders" component={OrderPage} />
-
+        <Route path="/order_details/:orderId" component={OrderDetailsPage} />
         <Route
           path="/:productSlug/:productId/p"
           component={ProductDetailsPage}

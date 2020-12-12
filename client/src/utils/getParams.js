@@ -1,4 +1,4 @@
-export default (query) => {
+const getParams = (query) => {
   if (query) {
     const queryString = query.split("?")[1];
     if (queryString.length > 0) {
@@ -15,3 +15,5 @@ export default (query) => {
 
   return {};
 };
+
+export default getParams;

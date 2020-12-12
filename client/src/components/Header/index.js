@@ -73,7 +73,9 @@ const Header = (props) => {
         style={{ zIndex: 1 }}
       >
         <Container fluid>
-          <Navbar.Brand href="/">Fashion E-Commerce</Navbar.Brand>
+          <Link to="/">
+            <Navbar.Brand>Fashion E-Commerce</Navbar.Brand>
+          </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">

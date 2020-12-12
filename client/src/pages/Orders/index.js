@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateOrder } from "../../actions";
-import Layout from "../../components/Layout";
+import Layout from "../../components/Layout/AdminLayout";
 import Card from "../../components/UI/Card";
 
 import { Form, Button } from "react-bootstrap";

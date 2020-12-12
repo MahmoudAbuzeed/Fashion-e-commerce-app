@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getOrders } from "../../actions";
-import Layout from "../../components/Layout";
+import Layout from "../../components/Layout/UserLayout";
 import { generatePublicUrl } from "../../urlConfig";
 
 import Grid from "@material-ui/core/Grid";
@@ -11,9 +11,6 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { Container } from "react-bootstrap";
-
-import "./style.css";
-//import { Breed } from "../../components/MaterialUI";
 
 /**
  * @author
@@ -61,12 +58,10 @@ const OrderPage = (props) => {
     dispatch(getOrders());
   }, []);
 
-  console.log(user);
-
   return (
-    <Layout>
-      <div style={{ padding: "10px", marginTop: "50px" }}>
-        <h1>My Orders</h1>
+    <div style={{ padding: "10px", marginTop: "50px" }}>
+      <Layout>
+        <h1 style={{ marginBottom: "20px" }}>My Orders</h1>
         <Container>
           <Grid container spacing={4}>
             {user.orders.map((order) => {
@@ -118,8 +113,8 @@ const OrderPage = (props) => {
             })}
           </Grid>
         </Container>
-      </div>
-    </Layout>
+      </Layout>
+    </div>
   );
 };
 

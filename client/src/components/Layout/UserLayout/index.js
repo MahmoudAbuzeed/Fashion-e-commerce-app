@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "../Header";
-import MenuHeader from "../MenuHeader";
+import Header from "../../Header";
+import MenuHeader from "../../MenuHeader";
 
 /**
  * @author

@@ -1,15 +1,7 @@
 import { cartConstants } from "../../actions/constants";
 
 const initState = {
-  cartItems: {
-    // 123: {
-    //     _id: 123,
-    //     name: 'Samsung mobile',
-    //     img: 'some.jpg',
-    //     price: 200,
-    //     qty: 1,
-    // }
-  },
+  cartItems: {},
   updatingCart: false,
   error: null,
 };
