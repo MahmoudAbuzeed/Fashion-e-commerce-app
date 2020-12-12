@@ -56,15 +56,7 @@ const Address = ({
                 <span className="addressMobileNumber">{adr.mobileNumber}</span>
               </div>
               {adr.selected && (
-                <Button
-                  onClick={() => enableAddressEditForm(adr)}
-                  style={{
-                    fontWeight: "500",
-                    color: "#2874f0",
-                  }}
-                >
-                  EDIT
-                </Button>
+                <Button onClick={() => enableAddressEditForm(adr)}>EDIT</Button>
               )}
             </div>
             <div className="fullAddress">

@@ -1,5 +1,7 @@
 import React from "react";
 import { TiShoppingCart } from "react-icons/ti";
+import { AiOutlineUnorderedList } from "react-icons/ai";
+
 import { useDispatch, useSelector } from "react-redux";
 import { signout, signup as _signup } from "../../actions";
 
@@ -27,6 +29,13 @@ const Header = (props) => {
       <Nav>
         <Link style={{ color: "#fff", textDecoration: "none" }} to="/cart">
           <TiShoppingCart /> &nbsp;Cart
+        </Link>{" "}
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <Link
+          style={{ color: "#fff", textDecoration: "none" }}
+          to="/account/orders"
+        >
+          <AiOutlineUnorderedList /> &nbsp;My Orders
         </Link>{" "}
         &nbsp;&nbsp;&nbsp;&nbsp;
         <span
