@@ -1,11 +1,8 @@
 import React from "react";
 import Layout from "../../components/Layout/UserLayout";
-import "./style.css";
 
 import { Carousel } from "react-bootstrap";
 
-import carusel1 from "../../images/carusel1.jpg";
-import carusel2 from "../../images/carusel2.jpg";
 import carusel3 from "../../images/carusel3.jpg";
 import carusel4 from "../../images/carusel4.jpg";
 import carusel5 from "../../images/carusel5.jpg";
