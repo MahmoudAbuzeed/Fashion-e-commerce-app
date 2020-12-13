@@ -16,8 +16,6 @@ const UpdateCategoriesModal = (props) => {
     onSubmit,
   } = props;
 
-  console.log({ expandedArray, checkedArray });
-
   return (
     <Modal
       show={show}
@@ -122,7 +120,6 @@ const UpdateCategoriesModal = (props) => {
                 }
               >
                 <option value="">Select Type</option>
-                <option value="store">Store</option>
                 <option value="product">Product</option>
                 <option value="page">Page</option>
               </select>

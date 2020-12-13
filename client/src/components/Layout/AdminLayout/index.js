@@ -36,6 +36,9 @@ const Layout = (props) => {
                 <li>
                   <NavLink to={`/admin/page`}>Page</NavLink>
                 </li>
+                <li>
+                  <NavLink to={`/admin/createAdmin`}>Create Admin</NavLink>
+                </li>
               </ul>
             </Col>
             <Col md={10} style={{ marginLeft: "auto", paddingTop: "60px" }}>

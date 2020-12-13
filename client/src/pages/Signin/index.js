@@ -70,9 +70,8 @@ const Signin = (props) => {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate onSubmit={userLogin}>
+        <form className={classes.form} onSubmit={userLogin}>
           <TextField
-            variant="outlined"
             margin="normal"
             required
             fullWidth
@@ -84,7 +83,6 @@ const Signin = (props) => {
             onChange={(e) => setEmail(e.target.value)}
           />
           <TextField
-            variant="outlined"
             margin="normal"
             required
             fullWidth

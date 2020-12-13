@@ -4,6 +4,7 @@ import { getOrder } from "../../../actions";
 import Layout from "../../../components/Layout/UserLayout";
 import Card from "@material-ui/core/Card";
 import { generatePublicUrl } from "../../../urlConfig";
+import { Redirect } from "react-router-dom";
 
 import "./style.css";
 import { Container } from "react-bootstrap";
@@ -16,6 +17,7 @@ import { Container } from "react-bootstrap";
 const OrderDetailsPage = (props) => {
   const dispatch = useDispatch();
   const orderDetails = useSelector((state) => state.user.orderDetails);
+  const auth = useSelector((state) => state.auth);
 
   useEffect(() => {
     const payload = {
@@ -23,6 +25,10 @@ const OrderDetailsPage = (props) => {
     };
     dispatch(getOrder(payload));
   }, []);
+
+  if (!auth.authenticate) {
+    return <Redirect to={`/`} />;
+  }
 
   const formatDate = (date) => {
     if (date) {

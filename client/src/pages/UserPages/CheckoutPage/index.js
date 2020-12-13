@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { addOrder, getAddress, getCartItems } from "../../../actions";
 import Layout from "../../../components/Layout/UserLayout";
 import { Button } from "react-bootstrap";
-import Input from "../../../components/UI/Input";
 
 import PriceDetails from "../../../components/PriceDetails";
 import Card from "../../../components/UI/Card";
 import CartPage from "../CartPage";
 import AddressForm from "./AddressForm";
+import { FormGroup, Label } from "reactstrap";
 
 import "./style.css";
 
@@ -43,45 +43,57 @@ const Address = ({
 }) => {
   return (
     <div className="flexRow addressContainer">
-      <div>
-        <input name="address" onClick={() => selectAddress(adr)} type="radio" />
-      </div>
       <div className="flexRow sb addressinfo">
-        {!adr.edit ? (
-          <div style={{ width: "100%" }}>
-            <div className="addressDetail">
-              <div>
-                <span className="addressName">{adr.name}</span>
-                <span className="addressType">{adr.addressType}</span>
-                <span className="addressMobileNumber">{adr.mobileNumber}</span>
+        <FormGroup check>
+          <Label check>
+            <input
+              name="address"
+              onClick={() => selectAddress(adr)}
+              type="radio"
+            />
+
+            {!adr.edit ? (
+              <div style={{ width: "100%" }}>
+                <div className="addressDetail">
+                  <div>
+                    <span className="addressName">{adr.name}</span>
+                    <span className="addressType">{adr.addressType}</span>
+                    <span className="addressMobileNumber">
+                      {adr.mobileNumber}
+                    </span>
+                  </div>
+                </div>
+                <div className="fullAddress">
+                  {adr.address} <br /> {`${adr.state} - ${adr.pinCode}`}
+                </div>
+                {adr.selected && (
+                  <Button
+                    onClick={() => confirmDeliveryAddress(adr)}
+                    style={{
+                      width: "200px",
+                      margin: "10px 0",
+                    }}
+                  >
+                    DELIVERY HERE
+                  </Button>
+                )}
+                &nbsp; &nbsp;
+                {adr.selected && (
+                  <Button onClick={() => enableAddressEditForm(adr)}>
+                    EDIT
+                  </Button>
+                )}
               </div>
-              {adr.selected && (
-                <Button onClick={() => enableAddressEditForm(adr)}>EDIT</Button>
-              )}
-            </div>
-            <div className="fullAddress">
-              {adr.address} <br /> {`${adr.state} - ${adr.pinCode}`}
-            </div>
-            {adr.selected && (
-              <Button
-                onClick={() => confirmDeliveryAddress(adr)}
-                style={{
-                  width: "200px",
-                  margin: "10px 0",
-                }}
-              >
-                DELIVERY HERE
-              </Button>
+            ) : (
+              <AddressForm
+                withoutLayout={true}
+                onSubmitForm={onAddressSubmit}
+                initialData={adr}
+                onCancel={() => {}}
+              />
             )}
-          </div>
-        ) : (
-          <AddressForm
-            withoutLayout={true}
-            onSubmitForm={onAddressSubmit}
-            initialData={adr}
-            onCancel={() => {}}
-          />
-        )}
+          </Label>
+        </FormGroup>
       </div>
     </div>
   );
@@ -179,7 +191,7 @@ const CheckoutPage = (props) => {
       <div style={{ marginTop: "10px" }}>
         <Layout>
           <Card>
-            <div>Thank you</div>
+            <div>Thank you, your order will be send very soon :)</div>
           </Card>
         </Layout>
       </div>
@@ -212,9 +224,7 @@ const CheckoutPage = (props) => {
                     <span style={{ margin: "0 5px" }}>{auth.user.email}</span>
                   </div>
                 ) : (
-                  <div>
-                    <Input label="Email" />
-                  </div>
+                  <div>YOU NEED TO LOGIN FIRST</div>
                 )
               }
             />
@@ -246,6 +256,7 @@ const CheckoutPage = (props) => {
               <AddressForm onSubmitForm={onAddressSubmit} onCancel={() => {}} />
             ) : auth.authenticate ? (
               <CheckoutStep
+                style={{ cursor: "pointer" }}
                 stepNumber={"+"}
                 title={"ADD NEW ADDRESS"}
                 active={false}

@@ -86,7 +86,6 @@ const Signup = (props) => {
               <TextField
                 autoComplete="fname"
                 name="firstName"
-                variant="outlined"
                 required
                 fullWidth
                 id="firstName"
@@ -97,7 +96,6 @@ const Signup = (props) => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                variant="outlined"
                 required
                 fullWidth
                 id="lastName"
@@ -109,7 +107,6 @@ const Signup = (props) => {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                variant="outlined"
                 required
                 fullWidth
                 id="email"
@@ -121,7 +118,6 @@ const Signup = (props) => {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                variant="outlined"
                 required
                 fullWidth
                 name="password"

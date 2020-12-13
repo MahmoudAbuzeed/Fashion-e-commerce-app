@@ -11,6 +11,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { Container } from "react-bootstrap";
+import { Redirect } from "react-router-dom";
 
 /**
  * @author
@@ -53,10 +54,15 @@ const OrderPage = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+  const auth = useSelector((state) => state.auth);
 
   useEffect(() => {
     dispatch(getOrders());
   }, []);
+
+  if (!auth.authenticate) {
+    return <Redirect to={`/`} />;
+  }
 
   return (
     <div style={{ padding: "10px", marginTop: "10px" }}>

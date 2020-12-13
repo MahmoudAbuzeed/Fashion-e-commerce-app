@@ -64,6 +64,12 @@ const NewPage = (props) => {
       return;
     }
 
+    if (desc === "") {
+      alert("description is required");
+      setCreateModal(false);
+      return;
+    }
+
     const form = new FormData();
     form.append("title", title);
     form.append("description", desc);

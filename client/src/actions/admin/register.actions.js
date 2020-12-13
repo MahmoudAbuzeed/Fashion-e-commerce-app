@@ -1,9 +1,9 @@
-import { userConstants } from "../constants";
+import { adminConstants } from "../constants";
 import axios from "../../helpers/axios";
 
-export const signup = (user) => {
+export const AdminRegister = (user) => {
   return async (dispatch) => {
-    dispatch({ type: userConstants.USER_REGISTER_REQUEST });
+    dispatch({ type: adminConstants.ADMIN_REGISTER_REQUEST });
     try {
       const { data } = await axios.post(
         `http://localhost:5000/api/admin/signup`,
@@ -12,13 +12,13 @@ export const signup = (user) => {
         }
       );
       dispatch({
-        type: userConstants.USER_REGISTER_SUCCESS,
+        type: adminConstants.ADMIN_REGISTER_SUCCESS,
         payload: { data },
       });
-      localStorage.setItem("userInfo", JSON.stringify(data));
+      //localStorage.setItem("userInfo", JSON.stringify(data));
     } catch (error) {
       dispatch({
-        type: userConstants.USER_REGISTER_FAILURE,
+        type: adminConstants.ADMIN_REGISTER_FAILURE,
         payload: error.message,
       });
     }

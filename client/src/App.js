@@ -14,6 +14,7 @@ import Products from "./pages/AdminPages/Products";
 import Orders from "./pages/AdminPages/Orders";
 import Categories from "./pages/AdminPages/Categories";
 import NewPage from "./pages/AdminPages/NewPage";
+import AdminSignup from "./pages/AdminPages/CreateAdmin";
 
 import ProductListPage from "./pages/UserPages/ProductListPage";
 import ProductDetailsPage from "./pages/UserPages/ProductDetailsPage";
@@ -40,6 +41,7 @@ function App() {
         <PrivateRoute path="/admin/categories" component={Categories} />
         <PrivateRoute path="/admin/products" component={Products} />
         <PrivateRoute path="/admin/orders" component={Orders} />
+        <PrivateRoute path="/admin/createAdmin" component={AdminSignup} />
 
         <Route path="/signin" component={Signin} />
         <Route path="/signup" component={Signup} />

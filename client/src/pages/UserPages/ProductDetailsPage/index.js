@@ -32,7 +32,7 @@ const ProductDetailsPage = (props) => {
   }
 
   return (
-    <div style={{ padding: "10px", marginTop: "70px" }}>
+    <div style={{ padding: "10px", marginTop: "10px" }}>
       <Layout>
         <div
           className="productDescriptionContainer"

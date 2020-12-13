@@ -134,18 +134,21 @@ const Products = (props) => {
           onChange={(e) => setName(e.target.value)}
         />
         <Input
+          type="number"
           label="Quantity"
           value={quantity}
           placeholder={`Quantity`}
           onChange={(e) => setQuantity(e.target.value)}
         />
         <Input
+          type="number"
           label="Price"
           value={price}
           placeholder={`Price`}
           onChange={(e) => setPrice(e.target.value)}
         />
         <Input
+          type="textarea"
           label="Description"
           value={description}
           placeholder={`Description`}

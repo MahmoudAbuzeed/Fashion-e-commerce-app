@@ -62,7 +62,6 @@ const AddressForm = (props) => {
         addressType,
       },
     };
-    console.log(payload);
     if (id) {
       payload.address._id = id;
     }
@@ -71,9 +70,7 @@ const AddressForm = (props) => {
   };
 
   useEffect(() => {
-    console.log("addressCount", user.address);
     if (submitFlag) {
-      console.log("where are we", user);
       let _address = {};
       if (id) {
         _address = {
@@ -103,6 +100,7 @@ const AddressForm = (props) => {
         <div className="flexRow">
           <div style={inputContainer}>
             <Input
+              type="text"
               label="Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -110,6 +108,7 @@ const AddressForm = (props) => {
           </div>
           <div style={inputContainer}>
             <Input
+              type="number"
               label="10-digit mobile number"
               value={mobileNumber}
               onChange={(e) => setMobileNumber(e.target.value)}
@@ -119,6 +118,7 @@ const AddressForm = (props) => {
         <div className="flexRow">
           <div style={inputContainer}>
             <Input
+              type="number"
               label="Pincode"
               value={pinCode}
               onChange={(e) => setPinCode(e.target.value)}
@@ -126,6 +126,7 @@ const AddressForm = (props) => {
           </div>
           <div style={inputContainer}>
             <Input
+              type="text"
               label="Locality"
               value={locality}
               onChange={(e) => setLocality(e.target.value)}
@@ -135,6 +136,7 @@ const AddressForm = (props) => {
         <div className="flexRow">
           <div style={inputContainer}>
             <Input
+              type="text"
               label="Address"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
@@ -145,6 +147,7 @@ const AddressForm = (props) => {
         <div className="flexRow">
           <div style={inputContainer}>
             <Input
+              type="text"
               label="City/District/Town"
               value={cityDistrictTown}
               onChange={(e) => setCityDistrictTown(e.target.value)}
@@ -152,6 +155,7 @@ const AddressForm = (props) => {
           </div>
           <div style={inputContainer}>
             <Input
+              type="text"
               label="State"
               value={state}
               onChange={(e) => setState(e.target.value)}
@@ -161,6 +165,7 @@ const AddressForm = (props) => {
         <div className="flexRow">
           <div style={inputContainer}>
             <Input
+              type="text"
               label="Landmark (Optional)"
               value={landmark}
               onChange={(e) => setLandmark(e.target.value)}
@@ -168,6 +173,7 @@ const AddressForm = (props) => {
           </div>
           <div style={inputContainer}>
             <Input
+              type="number"
               label="Alternate Phone (Optional)"
               value={alternatePhone}
               onChange={(e) => setAlternatePhone(e.target.value)}
@@ -184,7 +190,7 @@ const AddressForm = (props) => {
                 name="addressType"
                 value="home"
               />
-              <span>Home</span>
+              <span> Home</span>
             </div>
             <div>
               <input
@@ -193,7 +199,7 @@ const AddressForm = (props) => {
                 name="addressType"
                 value="work"
               />
-              <span>Work</span>
+              <span> Work</span>
             </div>
           </div>
         </div>
