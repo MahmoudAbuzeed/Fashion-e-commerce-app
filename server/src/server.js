@@ -6,17 +6,21 @@ const path = require("path");
 const cors = require("cors");
 
 // routes
-const authRoutes = require("./routes/auth");
-const adminRoutes = require("./routes/admin/auth");
-const categoryRoutes = require("./routes/category");
-const productRoutes = require("./routes/product");
-const cartRoutes = require("./routes/cart");
-const orderRoutes = require("./routes/order");
-const initialDataRoutes = require("./routes/admin/initialData");
-const adminOrderRoute = require("./routes/admin/order");
-const adminPageRoute = require("./routes/admin/page");
-const addressRoutes = require("./routes/address");
-
+const authRoutes = require("./routes/UserRoutes/auth");
+const adminRoutes = require("./routes/AdminRoutes/auth");
+const categoryRoutes = require("./routes/UserRoutes/category");
+const productRoutes = require("./routes/UserRoutes/product");
+const cartRoutes = require("./routes/UserRoutes/cart");
+const orderRoutes = require("./routes/UserRoutes/order");
+const initialDataRoutes = require("./routes/AdminRoutes/initialData");
+const adminOrderRoute = require("./routes/AdminRoutes/order");
+const adminPageRoute = require("./routes/AdminRoutes/page");
+const addressRoutes = require("./routes/UserRoutes/address");
+const { handleError } = require("./Shared/lib/error");
+const logger = require("./Shared/lib/logger");
+const expressRequestId = require("express-request-id")();
+const requestLogger = require("./Shared/lib/requestLogger");
+const { PAGE_NOT_FOUND } = require("./Shared/Constant");
 env.config();
 
 const app = express();
@@ -42,7 +46,8 @@ mongoose.connection.on("connected", () => {
 mongoose.connection.on("error", (err) => {
   console.log(`Failed to connect to database : ${err}`);
 });
-
+app.use(expressRequestId);
+app.use(requestLogger);
 // ----------- Middlewares ----------- //
 
 app.use(bodyParser.json());
@@ -50,13 +55,23 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
 app.use("/public", express.static(path.join(__dirname, "uploads")));
+app.use("/api", orderRoutes);
 app.use("/api", authRoutes);
 app.use("/api", adminRoutes);
 app.use("/api", categoryRoutes);
 app.use("/api", productRoutes);
 app.use("/api", cartRoutes);
-app.use("/api", orderRoutes);
 app.use("/api", initialDataRoutes);
 app.use("/api", adminOrderRoute);
 app.use("/api", adminPageRoute);
 app.use("/api", addressRoutes);
+
+app.use((req, res) => {
+  logger.error(req.method, req.originalUrl, PAGE_NOT_FOUND);
+  return handleError({ statusCode: 404, message: PAGE_NOT_FOUND }, res);
+});
+
+app.use((err, req, res, next) => {
+  logger.error(err);
+  handleError(err, res);
+});

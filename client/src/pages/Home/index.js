@@ -16,29 +16,30 @@ const Home = (props) => {
   return (
     <div style={{ marginTop: "10px" }}>
       <Layout>
-        <Carousel>
+        home
+        {/*<Carousel>
           <Carousel.Item interval={3000}>
-            <img className="d-block w-100" src={carusel3} alt="First slide" />
+            <img className="w-100" src={carusel3} alt="First slide" />
             <Carousel.Caption>
               <h3>First slide label</h3>
               <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item interval={2000}>
-            <img className="d-block w-100" src={carusel4} alt="Third slide" />
+            <img className=" w-100" src={carusel4} alt="Third slide" />
             <Carousel.Caption>
               <h3>Second slide label</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item interval={2000}>
-            <img className="d-block w-100" src={carusel5} alt="Third slide" />
+            <img className=" w-100" src={carusel5} alt="Third slide" />
             <Carousel.Caption>
               <h3>Second slide label</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </Carousel.Caption>
           </Carousel.Item>
-        </Carousel>{" "}
+        </Carousel>{" "}*/}
       </Layout>
     </div>
   );
