@@ -6,7 +6,7 @@ This Project Related to Store Web Application Where User can Shopping products o
 <hr/>
 <ul>
 <li>
-Javascript (Express Framework )
+NodeJs (Express Framework )
 </li>
 <li>
 Mongoose
@@ -19,9 +19,6 @@ JsonWebToken
 </li>
 <li>
 RESTful Api's
-</li>
-<li>
-RESTfull a Task Scheduling (Cron Jobs) To Automate Fetching News At Back-end
 </li>
 </ul>
 
