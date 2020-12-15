@@ -107,4 +107,7 @@ Test Best & Worst Cases Scenarios
 
 # Project Pictures
 </hr>
-<img src="client/GithubImages/0.jpg />
+<img
+src="client/GithubImages/0.jpg"
+
+/>
