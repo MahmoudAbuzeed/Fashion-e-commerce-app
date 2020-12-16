@@ -1,4 +1,4 @@
-follow the following steps to run this project
+# follow the following steps to run this project
 $ git clone
 $ cd server
 $ npm install
